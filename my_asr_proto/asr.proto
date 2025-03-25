@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package asr;
+
+service ASRService {
+  // Метод для распознавания текста из WAV-файла
+  rpc Transcribe (TranscribeRequest) returns (TranscribeResponse);
+
+  // Метод для классификации фразы (например, определение действия)
+  rpc Recognize (RecognizeRequest) returns (RecognizeResponse);
+}
+
+// Входные данные для Transcribe
+message TranscribeRequest {
+  // Имя файла (wave)
+  string filename = 1;
+  // Папка, где лежит файл (чтобы не "зашивать" её жёстко)
+  string folder_path = 2;
+}
+
+// Ответ от Transcribe
+message TranscribeResponse {
+  string text = 1;
+}
+
+// Входные данные для Recognize
+message RecognizeRequest {
+  // Фраза, которую надо классифицировать
+  string data = 1;
+  // Можно передать порог вероятности (ACTION_PROB_THRESHOLD), если нужно
+  double threshold = 2;
+}
+
+// Ответ от Recognize
+message RecognizeResponse {
+  bool recognized = 1;
+  string first_part = 2;
+  string second_part = 3;
+}
