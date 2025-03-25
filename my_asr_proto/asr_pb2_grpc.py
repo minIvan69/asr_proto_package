@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import asr_pb2 as asr__pb2
+from my_asr_proto import asr_pb2 as my__asr__proto_dot_asr__pb2
 
 GRPC_GENERATED_VERSION = '1.71.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in asr_pb2_grpc.py depends on'
+        + f' but the generated code in my_asr_proto/asr_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,13 +36,13 @@ class ASRServiceStub(object):
         """
         self.Transcribe = channel.unary_unary(
                 '/asr.ASRService/Transcribe',
-                request_serializer=asr__pb2.TranscribeRequest.SerializeToString,
-                response_deserializer=asr__pb2.TranscribeResponse.FromString,
+                request_serializer=my__asr__proto_dot_asr__pb2.TranscribeRequest.SerializeToString,
+                response_deserializer=my__asr__proto_dot_asr__pb2.TranscribeResponse.FromString,
                 _registered_method=True)
         self.Recognize = channel.unary_unary(
                 '/asr.ASRService/Recognize',
-                request_serializer=asr__pb2.RecognizeRequest.SerializeToString,
-                response_deserializer=asr__pb2.RecognizeResponse.FromString,
+                request_serializer=my__asr__proto_dot_asr__pb2.RecognizeRequest.SerializeToString,
+                response_deserializer=my__asr__proto_dot_asr__pb2.RecognizeResponse.FromString,
                 _registered_method=True)
 
 
@@ -68,13 +68,13 @@ def add_ASRServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Transcribe': grpc.unary_unary_rpc_method_handler(
                     servicer.Transcribe,
-                    request_deserializer=asr__pb2.TranscribeRequest.FromString,
-                    response_serializer=asr__pb2.TranscribeResponse.SerializeToString,
+                    request_deserializer=my__asr__proto_dot_asr__pb2.TranscribeRequest.FromString,
+                    response_serializer=my__asr__proto_dot_asr__pb2.TranscribeResponse.SerializeToString,
             ),
             'Recognize': grpc.unary_unary_rpc_method_handler(
                     servicer.Recognize,
-                    request_deserializer=asr__pb2.RecognizeRequest.FromString,
-                    response_serializer=asr__pb2.RecognizeResponse.SerializeToString,
+                    request_deserializer=my__asr__proto_dot_asr__pb2.RecognizeRequest.FromString,
+                    response_serializer=my__asr__proto_dot_asr__pb2.RecognizeResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -102,8 +102,8 @@ class ASRService(object):
             request,
             target,
             '/asr.ASRService/Transcribe',
-            asr__pb2.TranscribeRequest.SerializeToString,
-            asr__pb2.TranscribeResponse.FromString,
+            my__asr__proto_dot_asr__pb2.TranscribeRequest.SerializeToString,
+            my__asr__proto_dot_asr__pb2.TranscribeResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -129,8 +129,8 @@ class ASRService(object):
             request,
             target,
             '/asr.ASRService/Recognize',
-            asr__pb2.RecognizeRequest.SerializeToString,
-            asr__pb2.RecognizeResponse.FromString,
+            my__asr__proto_dot_asr__pb2.RecognizeRequest.SerializeToString,
+            my__asr__proto_dot_asr__pb2.RecognizeResponse.FromString,
             options,
             channel_credentials,
             insecure,
