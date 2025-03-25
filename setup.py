@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='my_asr_proto',              # любое имя пакета
-    version='0.1.0',
+    name='asr_proto_package',              # любое имя пакета
+    version='0.2.0',
     packages=find_packages(),
     install_requires=[
         'grpcio>=1.51.0',
@@ -14,7 +14,7 @@ setup(
     description='ASR proto package for gRPC',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/yourorg/my_asr_proto',  # если есть GitHub
+    url='https://github.com/minIvan69/asr_proto_package',  # если есть GitHub
     author='Ivan Mingalev',
     author_email='nero.fan69@gmail.com',
     license='MIT',
