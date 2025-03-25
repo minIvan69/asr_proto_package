@@ -2,11 +2,11 @@ from setuptools import setup, find_packages
 
 setup(
     name='asr_proto_package',              # любое имя пакета
-    version='0.2.0',
+    version='0.3.1',
     packages=find_packages(),
     install_requires=[
         'grpcio>=1.51.3',
-        'protobuf>=5.29.4',
+        'protobuf>=4.24.3',
         'grpcio-tools>=1.51.3'
         # если у вас есть ещё зависимости
     ],
